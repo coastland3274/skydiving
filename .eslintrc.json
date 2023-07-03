@@ -1,3 +1,67 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "unused-imports", "chakra-ui"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "chakra-ui/props-order": "error",
+    "chakra-ui/props-shorthand": "error",
+    "chakra-ui/require-specific-component": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "pathGroups": [
+          {
+            "group": "external",
+            "pattern": "{react,react-dom/**}",
+            "position": "before"
+          },
+          {
+            "group": "external",
+            "pattern": "{next,next/**}",
+            "position": "before"
+          },
+          {
+            "group": "internal",
+            "pattern": "{[A-Z]*,**/[A-Z]*}",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"]
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "next": "return",
+        "prev": "*"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "allowSeparatedGroups": true,
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    "unused-imports/no-unused-imports": "error"
+  }
 }
